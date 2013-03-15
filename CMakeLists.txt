@@ -100,7 +100,7 @@ include_directories( ${INC_DIR} )
 
 add_library( libnoise ${LIB_TYPE} ${SOURCES} )
 
-# Make will automatically add the prefix lib
+# GCC will automatically add the prefix lib
 if( CMAKE_COMPILER_IS_GNUCXX )
 	set_target_properties( libnoise PROPERTIES OUTPUT_NAME noise )
 endif()

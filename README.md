@@ -20,7 +20,7 @@ All the credit goes to the original author: [Jason Bevins](http://libnoise.sourc
 Licensing
 ---------
 
-The library is under the GNU Lesser General Public License (LGPL). For more details see the COPYING file.
+The library is under the GNU Lesser General Public License (LGPL). For more details see the [COPYING.txt](https://github.com/eXpl0it3r/libnoise/blob/master/COPYING.txt) file.
 
 ------------------------------------------------------------------------
 
