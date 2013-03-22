@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "exponent.h"
+#include "module/exponent.h"
 
 using namespace noise::module;
 

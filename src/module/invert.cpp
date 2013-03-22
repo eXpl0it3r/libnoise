@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "invert.h"
+#include "module/invert.h"
 
 using namespace noise::module;
 

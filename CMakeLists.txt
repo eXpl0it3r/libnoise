@@ -15,50 +15,50 @@ set( INC_DIR "include" )
 
 set(
 	SOURCES
-	${INC_DIR}/libnoise/basictypes.h
-	${INC_DIR}/libnoise/exception.h
-	${INC_DIR}/libnoise/interp.h
-	${INC_DIR}/libnoise/latlon.h
-	${INC_DIR}/libnoise/mathconsts.h
-	${INC_DIR}/libnoise/misc.h
-	${INC_DIR}/libnoise/noise.h
-	${INC_DIR}/libnoise/noisegen.h
-	${INC_DIR}/libnoise/vectortable.h
-	${INC_DIR}/libnoise/model/cylinder.h
-	${INC_DIR}/libnoise/model/line.h
-	${INC_DIR}/libnoise/model/model.h
-	${INC_DIR}/libnoise/model/plane.h
-	${INC_DIR}/libnoise/model/sphere.h
-	${INC_DIR}/libnoise/module/abs.h
-	${INC_DIR}/libnoise/module/add.h
-	${INC_DIR}/libnoise/module/billow.h
-	${INC_DIR}/libnoise/module/blend.h
-	${INC_DIR}/libnoise/module/cache.h
-	${INC_DIR}/libnoise/module/checkerboard.h
-	${INC_DIR}/libnoise/module/clamp.h
-	${INC_DIR}/libnoise/module/const.h
-	${INC_DIR}/libnoise/module/curve.h
-	${INC_DIR}/libnoise/module/cylinders.h
-	${INC_DIR}/libnoise/module/displace.h
-	${INC_DIR}/libnoise/module/exponent.h
-	${INC_DIR}/libnoise/module/invert.h
-	${INC_DIR}/libnoise/module/max.h
-	${INC_DIR}/libnoise/module/min.h
-	${INC_DIR}/libnoise/module/module.h
-	${INC_DIR}/libnoise/module/modulebase.h
-	${INC_DIR}/libnoise/module/multiply.h
-	${INC_DIR}/libnoise/module/perlin.h
-	${INC_DIR}/libnoise/module/power.h
-	${INC_DIR}/libnoise/module/ridgedmulti.h
-	${INC_DIR}/libnoise/module/rotatepoint.h
-	${INC_DIR}/libnoise/module/scalebias.h
-	${INC_DIR}/libnoise/module/scalepoint.h
-	${INC_DIR}/libnoise/module/select.h
-	${INC_DIR}/libnoise/module/spheres.h
-	${INC_DIR}/libnoise/module/terrace.h
-	${INC_DIR}/libnoise/module/translatepoint.h
-	${INC_DIR}/libnoise/module/turbulence.h
-	${INC_DIR}/libnoise/module/voronoi.h
+	${INC_DIR}/${PROJECT_NAME}/basictypes.h
+	${INC_DIR}/${PROJECT_NAME}/exception.h
+	${INC_DIR}/${PROJECT_NAME}/interp.h
+	${INC_DIR}/${PROJECT_NAME}/latlon.h
+	${INC_DIR}/${PROJECT_NAME}/mathconsts.h
+	${INC_DIR}/${PROJECT_NAME}/misc.h
+	${INC_DIR}/${PROJECT_NAME}/noise.h
+	${INC_DIR}/${PROJECT_NAME}/noisegen.h
+	${INC_DIR}/${PROJECT_NAME}/vectortable.h
+	${INC_DIR}/${PROJECT_NAME}/model/cylinder.h
+	${INC_DIR}/${PROJECT_NAME}/model/line.h
+	${INC_DIR}/${PROJECT_NAME}/model/model.h
+	${INC_DIR}/${PROJECT_NAME}/model/plane.h
+	${INC_DIR}/${PROJECT_NAME}/model/sphere.h
+	${INC_DIR}/${PROJECT_NAME}/module/abs.h
+	${INC_DIR}/${PROJECT_NAME}/module/add.h
+	${INC_DIR}/${PROJECT_NAME}/module/billow.h
+	${INC_DIR}/${PROJECT_NAME}/module/blend.h
+	${INC_DIR}/${PROJECT_NAME}/module/cache.h
+	${INC_DIR}/${PROJECT_NAME}/module/checkerboard.h
+	${INC_DIR}/${PROJECT_NAME}/module/clamp.h
+	${INC_DIR}/${PROJECT_NAME}/module/const.h
+	${INC_DIR}/${PROJECT_NAME}/module/curve.h
+	${INC_DIR}/${PROJECT_NAME}/module/cylinders.h
+	${INC_DIR}/${PROJECT_NAME}/module/displace.h
+	${INC_DIR}/${PROJECT_NAME}/module/exponent.h
+	${INC_DIR}/${PROJECT_NAME}/module/invert.h
+	${INC_DIR}/${PROJECT_NAME}/module/max.h
+	${INC_DIR}/${PROJECT_NAME}/module/min.h
+	${INC_DIR}/${PROJECT_NAME}/module/module.h
+	${INC_DIR}/${PROJECT_NAME}/module/modulebase.h
+	${INC_DIR}/${PROJECT_NAME}/module/multiply.h
+	${INC_DIR}/${PROJECT_NAME}/module/perlin.h
+	${INC_DIR}/${PROJECT_NAME}/module/power.h
+	${INC_DIR}/${PROJECT_NAME}/module/ridgedmulti.h
+	${INC_DIR}/${PROJECT_NAME}/module/rotatepoint.h
+	${INC_DIR}/${PROJECT_NAME}/module/scalebias.h
+	${INC_DIR}/${PROJECT_NAME}/module/scalepoint.h
+	${INC_DIR}/${PROJECT_NAME}/module/select.h
+	${INC_DIR}/${PROJECT_NAME}/module/spheres.h
+	${INC_DIR}/${PROJECT_NAME}/module/terrace.h
+	${INC_DIR}/${PROJECT_NAME}/module/translatepoint.h
+	${INC_DIR}/${PROJECT_NAME}/module/turbulence.h
+	${INC_DIR}/${PROJECT_NAME}/module/voronoi.h
 	${SRC_DIR}/latlon.cpp
 	${SRC_DIR}/noisegen.cpp
 	${SRC_DIR}/model/cylinder.cpp
@@ -96,7 +96,7 @@ set(
 	${SRC_DIR}/module/voronoi.cpp
 )
 
-include_directories( ${INC_DIR} )
+include_directories( ${INC_DIR}/${PROJECT_NAME} )
 
 add_library( libnoise ${LIB_TYPE} ${SOURCES} )
 
