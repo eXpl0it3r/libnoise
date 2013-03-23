@@ -20,9 +20,9 @@
 // off every 'zig'.)
 //
 
-#include "../interp.h"
-#include "../misc.h"
-#include "terrace.h"
+#include "interp.h"
+#include "misc.h"
+#include "module/terrace.h"
 
 using namespace noise::module;
 

@@ -19,7 +19,7 @@
 // The developer's email is angstrom@lionsanctuary.net
 //
 
-#include "power.h"
+#include "module/power.h"
 
 using namespace noise::module;
 

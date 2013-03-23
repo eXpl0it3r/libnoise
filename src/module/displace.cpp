@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "displace.h"
+#include "module/displace.h"
 
 using namespace noise::module;
 

@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "scalepoint.h"
+#include "module/scalepoint.h"
 
 using namespace noise::module;
 

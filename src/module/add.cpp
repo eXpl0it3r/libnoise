@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "add.h"
+#include "module/add.h"
 
 using namespace noise::module;
 

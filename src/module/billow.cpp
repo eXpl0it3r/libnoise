@@ -20,7 +20,7 @@
 // off every 'zig'.)
 //
 
-#include "billow.h"
+#include "module/billow.h"
 
 using namespace noise::module;
 
