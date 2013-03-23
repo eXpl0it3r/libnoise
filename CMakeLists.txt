@@ -1,8 +1,10 @@
 cmake_minimum_required( VERSION 2.8 )
 project( libnoise )
 
-set( LIBNOISE_BUILD_SHARED_LIB FALSE CACHE BOOL "Build shared libraries." )
 set( CMAKE_BUILD_TYPE Release CACHE STRING "Build Type." FORCE)
+set( LIBNOISE_BUILD_SHARED_LIB FALSE CACHE BOOL "Build shared libraries." )
+set( LIBNOISE_INCLUDE_DIR_NAME "noise" CACHE STRING "Define the name of the include directory for libnoise." )
+set( LIBNOISE_SKIP_INSTALL FALSE CACHE BOOL "Don't install libnoise." )
 
 if( LIBNOISE_BUILD_SHARED_LIB )
 	set( LIB_TYPE SHARED )
@@ -15,50 +17,50 @@ set( INC_DIR "include" )
 
 set(
 	SOURCES
-	${INC_DIR}/${PROJECT_NAME}/basictypes.h
-	${INC_DIR}/${PROJECT_NAME}/exception.h
-	${INC_DIR}/${PROJECT_NAME}/interp.h
-	${INC_DIR}/${PROJECT_NAME}/latlon.h
-	${INC_DIR}/${PROJECT_NAME}/mathconsts.h
-	${INC_DIR}/${PROJECT_NAME}/misc.h
-	${INC_DIR}/${PROJECT_NAME}/noise.h
-	${INC_DIR}/${PROJECT_NAME}/noisegen.h
-	${INC_DIR}/${PROJECT_NAME}/vectortable.h
-	${INC_DIR}/${PROJECT_NAME}/model/cylinder.h
-	${INC_DIR}/${PROJECT_NAME}/model/line.h
-	${INC_DIR}/${PROJECT_NAME}/model/model.h
-	${INC_DIR}/${PROJECT_NAME}/model/plane.h
-	${INC_DIR}/${PROJECT_NAME}/model/sphere.h
-	${INC_DIR}/${PROJECT_NAME}/module/abs.h
-	${INC_DIR}/${PROJECT_NAME}/module/add.h
-	${INC_DIR}/${PROJECT_NAME}/module/billow.h
-	${INC_DIR}/${PROJECT_NAME}/module/blend.h
-	${INC_DIR}/${PROJECT_NAME}/module/cache.h
-	${INC_DIR}/${PROJECT_NAME}/module/checkerboard.h
-	${INC_DIR}/${PROJECT_NAME}/module/clamp.h
-	${INC_DIR}/${PROJECT_NAME}/module/const.h
-	${INC_DIR}/${PROJECT_NAME}/module/curve.h
-	${INC_DIR}/${PROJECT_NAME}/module/cylinders.h
-	${INC_DIR}/${PROJECT_NAME}/module/displace.h
-	${INC_DIR}/${PROJECT_NAME}/module/exponent.h
-	${INC_DIR}/${PROJECT_NAME}/module/invert.h
-	${INC_DIR}/${PROJECT_NAME}/module/max.h
-	${INC_DIR}/${PROJECT_NAME}/module/min.h
-	${INC_DIR}/${PROJECT_NAME}/module/module.h
-	${INC_DIR}/${PROJECT_NAME}/module/modulebase.h
-	${INC_DIR}/${PROJECT_NAME}/module/multiply.h
-	${INC_DIR}/${PROJECT_NAME}/module/perlin.h
-	${INC_DIR}/${PROJECT_NAME}/module/power.h
-	${INC_DIR}/${PROJECT_NAME}/module/ridgedmulti.h
-	${INC_DIR}/${PROJECT_NAME}/module/rotatepoint.h
-	${INC_DIR}/${PROJECT_NAME}/module/scalebias.h
-	${INC_DIR}/${PROJECT_NAME}/module/scalepoint.h
-	${INC_DIR}/${PROJECT_NAME}/module/select.h
-	${INC_DIR}/${PROJECT_NAME}/module/spheres.h
-	${INC_DIR}/${PROJECT_NAME}/module/terrace.h
-	${INC_DIR}/${PROJECT_NAME}/module/translatepoint.h
-	${INC_DIR}/${PROJECT_NAME}/module/turbulence.h
-	${INC_DIR}/${PROJECT_NAME}/module/voronoi.h
+	${INC_DIR}/noise/basictypes.h
+	${INC_DIR}/noise/exception.h
+	${INC_DIR}/noise/interp.h
+	${INC_DIR}/noise/latlon.h
+	${INC_DIR}/noise/mathconsts.h
+	${INC_DIR}/noise/misc.h
+	${INC_DIR}/noise/noise.h
+	${INC_DIR}/noise/noisegen.h
+	${INC_DIR}/noise/vectortable.h
+	${INC_DIR}/noise/model/cylinder.h
+	${INC_DIR}/noise/model/line.h
+	${INC_DIR}/noise/model/model.h
+	${INC_DIR}/noise/model/plane.h
+	${INC_DIR}/noise/model/sphere.h
+	${INC_DIR}/noise/module/abs.h
+	${INC_DIR}/noise/module/add.h
+	${INC_DIR}/noise/module/billow.h
+	${INC_DIR}/noise/module/blend.h
+	${INC_DIR}/noise/module/cache.h
+	${INC_DIR}/noise/module/checkerboard.h
+	${INC_DIR}/noise/module/clamp.h
+	${INC_DIR}/noise/module/const.h
+	${INC_DIR}/noise/module/curve.h
+	${INC_DIR}/noise/module/cylinders.h
+	${INC_DIR}/noise/module/displace.h
+	${INC_DIR}/noise/module/exponent.h
+	${INC_DIR}/noise/module/invert.h
+	${INC_DIR}/noise/module/max.h
+	${INC_DIR}/noise/module/min.h
+	${INC_DIR}/noise/module/module.h
+	${INC_DIR}/noise/module/modulebase.h
+	${INC_DIR}/noise/module/multiply.h
+	${INC_DIR}/noise/module/perlin.h
+	${INC_DIR}/noise/module/power.h
+	${INC_DIR}/noise/module/ridgedmulti.h
+	${INC_DIR}/noise/module/rotatepoint.h
+	${INC_DIR}/noise/module/scalebias.h
+	${INC_DIR}/noise/module/scalepoint.h
+	${INC_DIR}/noise/module/select.h
+	${INC_DIR}/noise/module/spheres.h
+	${INC_DIR}/noise/module/terrace.h
+	${INC_DIR}/noise/module/translatepoint.h
+	${INC_DIR}/noise/module/turbulence.h
+	${INC_DIR}/noise/module/voronoi.h
 	${SRC_DIR}/latlon.cpp
 	${SRC_DIR}/noisegen.cpp
 	${SRC_DIR}/model/cylinder.cpp
@@ -96,7 +98,7 @@ set(
 	${SRC_DIR}/module/voronoi.cpp
 )
 
-include_directories( ${INC_DIR}/${PROJECT_NAME} )
+include_directories( ${INC_DIR}/noise )
 
 add_library( libnoise ${LIB_TYPE} ${SOURCES} )
 
@@ -105,7 +107,7 @@ if( CMAKE_COMPILER_IS_GNUCXX )
 	set_target_properties( libnoise PROPERTIES OUTPUT_NAME noise )
 endif()
 
-if( NOT NOISE_SKIP_INSTALL )
+if( NOT LIBNOISE_SKIP_INSTALL )
 	install(
 		TARGETS libnoise
 		RUNTIME DESTINATION bin COMPONENT bin
@@ -114,7 +116,7 @@ if( NOT NOISE_SKIP_INSTALL )
 	)
 
 	install(
-		DIRECTORY include/libnoise
-		DESTINATION include
+		DIRECTORY include/noise/
+		DESTINATION include/${LIBNOISE_INCLUDE_DIR_NAME}
 	)
 endif()
