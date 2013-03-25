@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 PROJECT_NAME           = libnoise
-PROJECT_NUMBER         = 0.9.0
+PROJECT_NUMBER         = 1.0.0
 OUTPUT_DIRECTORY       = .
 CREATE_SUBDIRS         = NO
 OUTPUT_LANGUAGE        = English
@@ -68,7 +68,8 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = ../src/
+INPUT                  = @CMAKE_SOURCE_DIR@/src/ \
+                         @CMAKE_SOURCE_DIR@/include/
 FILE_PATTERNS          = *.cpp \
                          *.h
 RECURSIVE              = YES
@@ -78,7 +79,7 @@ EXCLUDE_PATTERNS       =
 EXAMPLE_PATH           = 
 EXAMPLE_PATTERNS       = 
 EXAMPLE_RECURSIVE      = NO
-IMAGE_PATH             = img/
+IMAGE_PATH             = @CMAKE_SOURCE_DIR@/doc/img/
 INPUT_FILTER           = 
 FILTER_PATTERNS        = 
 FILTER_SOURCE_FILES    = NO
@@ -103,9 +104,11 @@ IGNORE_PREFIX          =
 GENERATE_HTML          = YES
 HTML_OUTPUT            = html
 HTML_FILE_EXTENSION    = .html
-HTML_HEADER            = htmldata/templateheader.html
-HTML_FOOTER            = htmldata/templatefooter.html
-HTML_STYLESHEET        = htmldata/doxygen.css
+HTML_HEADER            = @CMAKE_SOURCE_DIR@/doc/htmldata/templateheader.html
+HTML_FOOTER            = @CMAKE_SOURCE_DIR@/doc/htmldata/templatefooter.html
+HTML_STYLESHEET        = @CMAKE_SOURCE_DIR@/doc/htmldata/doxygen.css
+HTML_EXTRA_FILES       = @CMAKE_SOURCE_DIR@/doc/htmldata/libnoise.png \
+                         @CMAKE_SOURCE_DIR@/doc/htmldata/background.png
 HTML_ALIGN_MEMBERS     = YES
 GENERATE_HTMLHELP      = NO
 CHM_FILE               = 

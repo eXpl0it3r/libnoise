@@ -1,12 +1,16 @@
 cmake_minimum_required( VERSION 2.8 )
 project( libnoise )
 
-set( CMAKE_BUILD_TYPE Release CACHE STRING "Build Type." FORCE)
-set( LIBNOISE_BUILD_SHARED_LIB FALSE CACHE BOOL "Build shared libraries." )
+set( CMAKE_BUILD_TYPE Release CACHE STRING "Build Type." FORCE )
+set( LIBNOISE_BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libraries." )
+set( LIBNOISE_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation." )
+
 set( LIBNOISE_INCLUDE_DIR_NAME "noise" CACHE STRING "Define the name of the include directory for libnoise." )
 set( LIBNOISE_SKIP_INSTALL FALSE CACHE BOOL "Don't install libnoise." )
+mark_as_advanced( LIBNOISE_INCLUDE_DIR_NAME )
+mark_as_advanced( LIBNOISE_SKIP_INSTALL )
 
-if( LIBNOISE_BUILD_SHARED_LIB )
+if( LIBNOISE_BUILD_SHARED_LIBS )
 	set( LIB_TYPE SHARED )
 else()
 	set( LIB_TYPE STATIC )
@@ -105,6 +109,10 @@ add_library( libnoise ${LIB_TYPE} ${SOURCES} )
 # GCC will automatically add the prefix lib
 if( CMAKE_COMPILER_IS_GNUCXX )
 	set_target_properties( libnoise PROPERTIES OUTPUT_NAME noise )
+endif()
+
+if(LIBNOISE_BUILD_DOC)
+	add_subdirectory( doc )
 endif()
 
 if( NOT LIBNOISE_SKIP_INSTALL )
