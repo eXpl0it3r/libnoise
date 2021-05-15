@@ -1,18 +1,10 @@
-cmake_minimum_required( VERSION 2.8 )
+cmake_minimum_required( VERSION 3.0 )
 project( libnoise )
 
-set( CMAKE_BUILD_TYPE Release CACHE STRING "Build Type." FORCE )
-set( LIBNOISE_BUILD_SHARED_LIBS FALSE CACHE BOOL "Build shared libraries." )
-set( LIBNOISE_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation." )
+set( LIBNOISE_BUILD_DOC FALSE CACHE BOOL "Build Doxygen documentation" )
 
-set( LIBNOISE_INCLUDE_DIR_NAME "noise" CACHE STRING "Define the name of the include directory for libnoise." )
+set( LIBNOISE_INCLUDE_DIR_NAME "noise" CACHE STRING "Define the name of the include directory for libnoise" )
 mark_as_advanced( LIBNOISE_INCLUDE_DIR_NAME )
-
-if( LIBNOISE_BUILD_SHARED_LIBS )
-    set( LIB_TYPE SHARED )
-else()
-    set( LIB_TYPE STATIC )
-endif()
 
 set( SRC_DIR "src" )
 set( INC_DIR "include" )
@@ -100,9 +92,9 @@ set(
     ${SRC_DIR}/module/voronoi.cpp
 )
 
-include_directories( ${INC_DIR}/noise )
+add_library( libnoise ${SOURCES} )
 
-add_library( libnoise ${LIB_TYPE} ${SOURCES} )
+target_include_directories( libnoise PUBLIC ${INC_DIR} PRIVATE ${INC_DIR}/noise )
 
 # GCC will automatically add the prefix lib
 if( CMAKE_COMPILER_IS_GNUCXX )

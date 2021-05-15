@@ -12,7 +12,7 @@ add_custom_target(
     doc ALL
     COMMAND ${DOXYGEN_EXECUTABLE} "${CMAKE_BINARY_DIR}/doc/Doxyfile"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/doc/
-    )
+)
 
 # Install documentation to doc directory
 install(
