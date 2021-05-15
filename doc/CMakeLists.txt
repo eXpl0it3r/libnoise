@@ -9,16 +9,14 @@ configure_file( ${LIBNOISE_INPUT_DOXYFILE} ${LIBNOISE_OUTPUT_DOXYFILE} @ONLY )
 
 # Add target for documentation, invokes Doxygen
 add_custom_target(
-	doc ALL
-	COMMAND ${DOXYGEN_EXECUTABLE} "${CMAKE_BINARY_DIR}/doc/Doxyfile"
-	WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/doc/
-	)
+    doc ALL
+    COMMAND ${DOXYGEN_EXECUTABLE} "${CMAKE_BINARY_DIR}/doc/Doxyfile"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/doc/
+    )
 
 # Install documentation to doc directory
-if( NOT LIBNOISE_SKIP_INSTALL )
-	install(
-			DIRECTORY ${CMAKE_BINARY_DIR}/doc/html/
-			DESTINATION doc
-			COMPONENT doc
-			)
-endif()
+install(
+    DIRECTORY ${CMAKE_BINARY_DIR}/doc/html/
+    DESTINATION doc
+    COMPONENT doc
+)
