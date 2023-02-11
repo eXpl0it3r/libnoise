@@ -1,0 +1,45 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{ matrix.platform.name }} ${{ matrix.config.name }}
+    runs-on: ${{ matrix.platform.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+        - { name: Windows VS2019, os: windows-2019 }
+        - { name: Windows VS2022, os: windows-2022 }
+        - { name: Linux GCC,      os: ubuntu-20.04 }
+        - { name: Linux Clang,    os: ubuntu-20.04, flags: -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ }
+        - { name: MacOS XCode,    os: macos-12 }
+        config:
+        - { name: Shared, flags: -DBUILD_SHARED_LIBS=TRUE }
+        - { name: Static, flags: -DBUILD_SHARED_LIBS=FALSE }
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Windows Dependencies
+      if: runner.os == 'Windows'
+      run: choco install doxygen.install
+
+    - name: Install Linux Dependencies
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install doxygen
+
+    - name: Install macOS Dependencies
+      if: runner.os == 'macOS'
+      run: brew install doxygen
+
+    - name: Configure CMake
+      shell: bash
+      run: cmake -S $GITHUB_WORKSPACE -B $GITHUB_WORKSPACE/build -DCMAKE_INSTALL_PREFIX=$GITHUB_WORKSPACE/install -DLIBNOISE_BUILD_DOC=TRUE -DCMAKE_VERBOSE_MAKEFILE=ON ${{matrix.platform.flags}} ${{matrix.config.flags}}
+
+    - name: Build
+      shell: bash
+      run: cmake --build $GITHUB_WORKSPACE/build --config Release --target install
